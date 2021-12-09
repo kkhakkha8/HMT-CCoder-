@@ -11,7 +11,8 @@
     <h1>My Blogs</h1>
 <?php
     foreach($blogs as $blog): ?>
-        <h1><a href="<?= $blog->slug ; ?>" ><?= $blog->title ;?></a></h1>
+        <h1><a href="<?= "blog/".$blog->slug ; ?>" ><?= $blog->title ;?></a></h1>
+        <p>Published at - <?= $blog->date ?></p>
         <p><?= $blog->intro; ?></p>
         
    <?php endforeach ;
