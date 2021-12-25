@@ -1,7 +1,7 @@
 <?php
 
 use App\Models\Blog;
-
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use function PHPUnit\Framework\fileExists;
 
@@ -18,13 +18,24 @@ use function PHPUnit\Framework\fileExists;
 |
 */
 
+Route::get('/welcome', function () {
+    
+    return view('welcome');
+});
+
 Route::get('/', function () {
     
     return view('blogs',['blogs'=> Blog::all()]);
 });
 
-Route::get("/blog/{blog}",function($slug){
+Route::get("/blog/{blog:slug}",function(Blog $blog){
     return view('blog',[
-        'blog'=> Blog::find($slug)
+        // 'blog'=> Blog::find($slug)
+        'blog'=>$blog
     ]);
 })->where('blog','[A-z0-9\-\@]+'); // whereAlphaNumeric->('blog')
+
+Route::get('/categories/{category:slug}',function(Category $category){
+   // $blogs = $category->blogs;
+    return view('blogs',['blogs'=> $category->blogs]);
+});
