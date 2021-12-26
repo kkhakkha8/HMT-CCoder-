@@ -5,10 +5,14 @@
     </x-slot>
     <x-slot name='content'>
         <h1>My Blogs</h1>
-        
         @foreach($blogs as $blog)
+        
             <div>
+                
                 <h1><a href="<?= "blog/".$blog->slug ; ?>" ><?= $blog->title ;?></a></h1>
+                <p>
+                    <a href="/authors/{{$blog->user->name}}"><h4>Author - {{$blog->user->name}}</h4></a>
+                </p>
                 <p>
                     <a href="<?= "/categories/".$blog->category->slug;?>"><?= $blog->category->name ?></a>
                 </p>

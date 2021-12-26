@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         User::truncate();
         Category::truncate();
         Blog::truncate();
-        User::factory()->create();
+        
 
         $frontend = Category::factory()->create(['name'=>'frontend']);
         $backend = Category::factory()->create(['name'=>'backend']);

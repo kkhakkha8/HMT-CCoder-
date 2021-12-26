@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Blog;
+use App\Models\User;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use function PHPUnit\Framework\fileExists;
@@ -38,4 +39,9 @@ Route::get("/blog/{blog:slug}",function(Blog $blog){
 Route::get('/categories/{category:slug}',function(Category $category){
    // $blogs = $category->blogs;
     return view('blogs',['blogs'=> $category->blogs]);
+});
+
+Route::get('/authors/{author:name}',function(User $author){
+
+    return view('blogs',['blogs'=>$author->blogs]) ;
 });
