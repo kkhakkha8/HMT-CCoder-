@@ -12,10 +12,14 @@ class Blog extends Model
     protected $fillable = ['title','intro','body'];
     //protected $guarded = [];
 
+    //eager loading
+    //protected $with=['category','author'];
+    //protected $without = ['category'];
+
     public function category(){
         return  $this->belongsTo(Category::class);
     }
-    public function user(){
-        return $this->belongsTo(User::class);
+    public function author(){
+        return $this->belongsTo(User::class,'user_id');
     }
 }
