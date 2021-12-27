@@ -11,7 +11,7 @@
                 
                 <h1><a href="<?= "blog/".$blog->slug ; ?>" ><?= $blog->title ;?></a></h1>
                 <p>
-                    <h4>Author - <a href="/authors/{{$blog->author->name}}">{{$blog->author->name}}</h4></a>
+                    <h4>Author - <a href="/authors/{{$blog->author->username}}">{{$blog->author->name}}</h4></a>
                 </p>
                 <p>
                     <a href="<?= "/categories/".$blog->category->slug;?>"><?= $blog->category->name ?></a>
