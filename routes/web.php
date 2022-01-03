@@ -20,12 +20,12 @@ use function PHPUnit\Framework\fileExists;
 */
 
 Route::get('/welcome', function () {
-    
+
     return view('welcome');
 });
 
 Route::get('/', function () {
-    
+
     //return view('blogs',['blogs'=> Blog::all()]);
     return view('blogs',['blogs'=> Blog::with('category','author')->latest()->get()]);
 });
@@ -33,7 +33,8 @@ Route::get('/', function () {
 Route::get("/blog/{blog:slug}",function(Blog $blog){
     return view('blog',[
         // 'blog'=> Blog::find($slug)
-        'blog'=>$blog
+        'blog'=>$blog,
+        'randomBlogs'=>Blog::inRandomOrder()->take(3)->get()
     ]);
 })->where('blog','[A-z0-9\-\@]+'); // whereAlphaNumeric->('blog')
 

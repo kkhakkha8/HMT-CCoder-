@@ -22,6 +22,7 @@
               <p class="card-text">
                 {{$blog->intro}}
               </p>
-              <a href="./blog/{{$blog->slug}}" class="btn btn-primary">Read More</a>
+              <a href="/blog/{{$blog->slug}}" class="btn btn-primary">Read More</a>
             </div>
           </div>
+
