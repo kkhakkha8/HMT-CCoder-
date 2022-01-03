@@ -25,10 +25,13 @@ Route::get('/welcome', function () {
 });
 
 Route::get('/', function () {
-
+    $blogs = Blog::with('category','author')->latest();
+    if(request('search')){
+        $blogs = $blogs->where('title','LIKE','%' .request('search'). '%');
+    }
     //return view('blogs',['blogs'=> Blog::all()]);
     return view('blogs',[
-        'blogs'=> Blog::with('category','author')->latest()->get(),
+        'blogs'=> $blogs->get(),
         'categories'=>Category::all(),
 
 
