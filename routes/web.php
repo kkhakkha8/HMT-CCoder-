@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Models\Blog;
 use App\Models\User;
 use App\Models\Category;
@@ -19,32 +20,10 @@ use function PHPUnit\Framework\fileExists;
 |
 */
 
-Route::get('/welcome', function () {
 
-    return view('welcome');
-});
+Route::get('/', [BlogController::class,'index']);
 
-Route::get('/', function () {
-    $blogs = Blog::with('category','author')->latest();
-    if(request('search')){
-        $blogs = $blogs->where('title','LIKE','%' .request('search'). '%');
-    }
-    //return view('blogs',['blogs'=> Blog::all()]);
-    return view('blogs',[
-        'blogs'=> $blogs->get(),
-        'categories'=>Category::all(),
-
-
-    ]);
-});
-
-Route::get("/blog/{blog:slug}",function(Blog $blog){
-    return view('blog',[
-        // 'blog'=> Blog::find($slug)
-        'blog'=>$blog,
-        'randomBlogs'=>Blog::inRandomOrder()->take(3)->get()
-    ]);
-})->where('blog','[A-z0-9\-\@]+'); // whereAlphaNumeric->('blog')
+Route::get("/blog/{blog:slug}",[BlogController::class,'show']); // whereAlphaNumeric->('blog')
 
 Route::get('/categories/{category:slug}',function(Category $category){
    // $blogs = $category->blogs;
