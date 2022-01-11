@@ -50,11 +50,12 @@
         </div>
       </form>
       <div class="row">
-        @foreach($blogs as $blog)
+        @forelse($blogs as $blog)
           <div class="col-md-4 mb-4">
               <x-blog-card :blog="$blog" />
           </div>
-        @endforeach
-
+          @empty
+          <p class='text-center'>Blogs Not Found.</p>
+        @endforelse
       </div>
     </section>
