@@ -1,17 +1,13 @@
 
-@extends('layout')
+  <x-layout>
+    <x-navbar></x-navbar>
+    <x-hero />
+    <x-blog-section :blogs="$blogs" :categories="$categories" :currentCategory="$currentCategory ?? null" />
+    <x-subscribe />
+</x-layout>
 
-@section('content')
-    <h1>My Blogs</h1>
-    
-        @foreach($blogs as $blog)
-        
-            <div class="{{$loop->even ? 'bg-yellow' : ''}}">
-                <h1><a href="<?= "blog/".$blog->slug ; ?>" ><?= $blog->title ;?></a></h1>
-                <p>Published at - <?= $blog->date ?></p>
-                <p><?= $blog->intro; ?></p>
-            
-            </div>
-        @endforeach
 
-@endsection
+
+
+
+
