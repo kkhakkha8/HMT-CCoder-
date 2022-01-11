@@ -55,7 +55,7 @@
               <x-blog-card :blog="$blog" />
           </div>
           @empty
-          <p class='text-center'>Blogs Not Found.</p>
+          <p class='text-center'>Blogs Not Found Here.</p>
         @endforelse
       </div>
     </section>
