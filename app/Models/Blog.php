@@ -9,13 +9,20 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Blog extends Model
 {
     use HasFactory;
-    protected $fillable = ['title','intro','body'];
-    //protected $guarded = [];
+   //allow everycolumn in blogs table
+   protected $guarded=[];
+   //allow specific column in blogs table
+   // protected $fillable=['title','intro','body'];
+   protected $with=['category','author'];
 
-    //eager loading
-    //protected $with=['category','author'];
-    //protected $without = ['category'];
 
+   public function scopeFilter($query, $filter){ // Blog::latest()->filter()->get();
+        $query->when($filter(['search']),function($query,$search){
+            $query->where('title','LIKE','%'. $search . '%')
+                  ->orWhere('body','LIKE','%'. $search . '%');
+                  return $query;
+        });
+   }
     public function category(){
         return  $this->belongsTo(Category::class);
     }
