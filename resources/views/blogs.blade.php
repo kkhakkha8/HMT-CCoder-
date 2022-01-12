@@ -2,7 +2,7 @@
   <x-layout>
     <x-navbar></x-navbar>
     <x-hero />
-    <x-blog-section :blogs="$blogs" :categories="$categories" :currentCategory="$currentCategory ?? null" />
+    <x-blog-section :blogs="$blogs" />
     <x-subscribe />
 </x-layout>
 

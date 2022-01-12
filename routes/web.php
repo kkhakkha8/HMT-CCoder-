@@ -1,9 +1,9 @@
 <?php
 
 use App\Http\Controllers\BlogController;
-use App\Models\Blog;
+
 use App\Models\User;
-use App\Models\Category;
+
 use Illuminate\Support\Facades\Route;
 use function PHPUnit\Framework\fileExists;
 
@@ -25,20 +25,13 @@ Route::get('/', [BlogController::class,'index']);
 
 Route::get("/blog/{blog:slug}",[BlogController::class,'show']); // whereAlphaNumeric->('blog')
 
-Route::get('/categories/{category:slug}',function(Category $category){
-   // $blogs = $category->blogs;
-    return view('blogs',[
-        'blogs'=> $category->blogs->load('author','category'),
-        'categories'=>Category::all(),
-        'currentCategory'=>$category
-    ]);
-});
 
 Route::get('/authors/{author:username}',function(User $author){
 
     //return view('blogs',['blogs'=>$author->blogs]) ;
     return view('blogs',[
-        'blogs'=>$author->blogs->load('author','category'),
-        'categories'=>Category::all()
+        // 'blogs'=>$author->blogs->load('author','category')
+        'blogs'=>$author->blogs
+
         ]) ;
 });
