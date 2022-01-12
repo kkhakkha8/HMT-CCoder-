@@ -26,12 +26,3 @@ Route::get('/', [BlogController::class,'index']);
 Route::get("/blog/{blog:slug}",[BlogController::class,'show']); // whereAlphaNumeric->('blog')
 
 
-Route::get('/authors/{author:username}',function(User $author){
-
-    //return view('blogs',['blogs'=>$author->blogs]) ;
-    return view('blogs',[
-        // 'blogs'=>$author->blogs->load('author','category')
-        'blogs'=>$author->blogs
-
-        ]) ;
-});
