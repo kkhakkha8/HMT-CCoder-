@@ -10,7 +10,7 @@ class BlogController extends Controller
     //
     public function index(){
         //return view('blogs',['blogs'=> Blog::all()]);
-        return view('blogs',[
+        return view('blogs.index',[
             'blogs'=> Blog::latest()
                         ->filter(request(['search','category','username']))
                         ->simplePaginate(6)
@@ -19,7 +19,7 @@ class BlogController extends Controller
         ]);
     }
     public function show(Blog $blog){
-        return view('blog',[
+        return view('blogs.show',[
             // 'blog'=> Blog::find($slug)
             'blog'=>$blog,
             'randomBlogs'=>Blog::inRandomOrder()->take(3)->get()

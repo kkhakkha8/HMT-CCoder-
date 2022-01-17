@@ -25,4 +25,10 @@ Route::get('/', [BlogController::class,'index']);
 
 Route::get("/blog/{blog:slug}",[BlogController::class,'show']); // whereAlphaNumeric->('blog')
 
-
+// all  ->  index  -> blogs.index
+//single  -> show  ->blogs.show
+//form  -> create  ->blogs.create
+//data store  -> store  -> store to db
+//edit form -> edit  -> blogs.edit
+//server update -> update  ->
+//server delete -> destory
