@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\BlogController;
-
 use App\Models\User;
 
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BlogController;
 use function PHPUnit\Framework\fileExists;
 
 
@@ -25,6 +26,7 @@ Route::get('/', [BlogController::class,'index']);
 
 Route::get("/blog/{blog:slug}",[BlogController::class,'show']); // whereAlphaNumeric->('blog')
 
+Route::get('/create',[AuthController::class,'create']);
 // all  ->  index  -> blogs.index
 //single  -> show  ->blogs.show
 //form  -> create  ->blogs.create
