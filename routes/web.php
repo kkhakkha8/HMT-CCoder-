@@ -26,7 +26,9 @@ Route::get('/', [BlogController::class,'index']);
 
 Route::get("/blog/{blog:slug}",[BlogController::class,'show']); // whereAlphaNumeric->('blog')
 
-Route::get('/create',[AuthController::class,'create']);
+Route::get('/register',[AuthController::class,'create']);
+
+Route::post('/register',[AuthController::class,'store']);
 // all  ->  index  -> blogs.index
 //single  -> show  ->blogs.show
 //form  -> create  ->blogs.create
