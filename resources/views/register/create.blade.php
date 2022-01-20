@@ -14,7 +14,13 @@
                            id="exampleInputEmail1"
                            aria-describedby="emailHelp"
                            name = 'name'
+                           value='{{old('name')}}'
                           required>
+                            {{-- Error Message --}}
+                          {{-- @error('name')
+                            <p class="text-danger">{{$message}}</p>
+                          @enderror --}}
+
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail1">Username</label>
@@ -23,6 +29,7 @@
                             id="exampleInputEmail1"
                             aria-describedby="emailHelp"
                             name = 'username'
+                            value='{{old('username')}}'
                             required>
                           </div>
                           <div class="mb-3">
@@ -32,6 +39,7 @@
                             id="exampleInputEmail1"
                             aria-describedby="emailHelp"
                             name = 'email'
+                            value='{{old('email')}}'
                             required
                             >
                           </div>
@@ -41,9 +49,19 @@
                           class="form-control"
                           id="exampleInputPassword1"
                           name = 'password'
+
                           required>
                         </div>
                         <button type="submit" class="btn btn-primary ">Submit</button>
+                        {{-- Error Message --}}
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>
+                                <p class='text-danger'>{{$error}}</p>
+                            </li>
+                            @endforeach
+
+                        </ul>
                     </form>
                 </div>
             </div>
