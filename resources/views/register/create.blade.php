@@ -17,9 +17,11 @@
                            value='{{old('name')}}'
                           required>
                             {{-- Error Message --}}
-                          {{-- @error('name')
-                            <p class="text-danger">{{$message}}</p>
-                          @enderror --}}
+                          @error('name')
+                          <ul>
+                              <li><p class="text-danger">{{$message}}</p></li>
+                          </ul>
+                          @enderror
 
                         </div>
                         <div class="mb-3">
@@ -31,6 +33,11 @@
                             name = 'username'
                             value='{{old('username')}}'
                             required>
+                            @error('username')
+                            <ul>
+                                <li><p class="text-danger">{{$message}}</p></li>
+                            </ul>
+                            @enderror
                           </div>
                           <div class="mb-3">
                             <label for="exampleInputEmail1">Email address</label>
@@ -42,6 +49,11 @@
                             value='{{old('email')}}'
                             required
                             >
+                            @error('email')
+                            <ul>
+                                <li><p class="text-danger">{{$message}}</p></li>
+                            </ul>
+                            @enderror
                           </div>
                         <div class="mb-3">
                           <label for="exampleInputPassword1">Password</label>
@@ -51,17 +63,22 @@
                           name = 'password'
 
                           required>
+                          @error('password')
+                          <ul>
+                              <li><p class="text-danger">{{$message}}</p></li>
+                          </ul>
+                          @enderror
                         </div>
                         <button type="submit" class="btn btn-primary ">Submit</button>
                         {{-- Error Message --}}
-                        <ul>
+                        {{-- <ul>
                             @foreach ($errors->all() as $error)
                             <li>
                                 <p class='text-danger'>{{$error}}</p>
                             </li>
                             @endforeach
 
-                        </ul>
+                        </ul> --}}
                     </form>
                 </div>
             </div>
