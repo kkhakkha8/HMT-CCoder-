@@ -20,8 +20,8 @@ class AuthController extends Controller
             'password'=>['required','min:8']
         ]);
 
-        User::create($userData);
-
-        return redirect('/');
+        $user = User::create($userData);
+        //session()->flash('success',"Welcome Dear , $user->name");
+        return redirect('/')->with('success', "Welcome Dear , $user->name");
     }
 }
