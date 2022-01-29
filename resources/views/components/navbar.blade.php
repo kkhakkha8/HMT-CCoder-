@@ -12,6 +12,7 @@
                 @endif --}}
                 @guest
                     <a href="/register" class="nav-link">Register</a>
+                    <a href="/login" class="nav-link">Login</a>
                 @else
                     <a href="" class="nav-link">Welcome {{auth()->user()->name}}</a>
                     <form action="../logout" method="POST">
@@ -20,6 +21,7 @@
                     </form>
 
                 @endguest
+
                 <a href="#subscribe" class="nav-link">Subscribe</a>
             </div>
       </div>
