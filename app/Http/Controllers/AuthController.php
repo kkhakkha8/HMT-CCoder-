@@ -35,6 +35,7 @@ class AuthController extends Controller
     }
 
     public function post_login() {
+        //validation
         $formData = request()->validate([
             'email'=> ['required','max:255','email',Rule::exists('users','email')],
             'password'=>['required','min:8']
@@ -43,6 +44,19 @@ class AuthController extends Controller
             'password.min'=>'password should be more than 8 characters'
         ]);
 
-        dd($formData);
+        //auth-attempt
+
+        //if user credential correct -> redirect home
+        if(auth()->attempt($formData))
+        {
+            return redirect('/')->with('success','Welcome back');
+        }else  // if user credential wrong -> redirect back to form with error
+        {
+            return redirect()->back()->withErrors([
+                'email'=>'User credential wrong',
+                'password'=>'password wrong'
+            ]);
+        }
+
     }
 }
