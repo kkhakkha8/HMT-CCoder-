@@ -14,6 +14,7 @@
                     <a href="/register" class="nav-link">Register</a>
                     <a href="/login" class="nav-link">Login</a>
                 @else
+                    <img style="height:50px;width:50px;border-radius:30px" src="{{auth()->user()->avatar}}" alt="">
                     <a href="" class="nav-link">Welcome {{auth()->user()->name}}</a>
                     <form action="../logout" method="POST">
                         @csrf

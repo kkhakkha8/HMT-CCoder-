@@ -14,7 +14,7 @@ class AddAvatarColumnToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('avatar')->after('username')->nullable();
+            $table->string('avatar')->nullable()->default('https://th.bing.com/th/id/OIP.8DDnZg9-q5BkyTcfOAYsbwHaGA?pid=ImgDet&rs=1')->after('username');
         });
     }
 

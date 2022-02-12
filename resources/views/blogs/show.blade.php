@@ -22,20 +22,29 @@
             </div>
           </div>
           {{-- Comment form section --}}
-          <section class="container">
-              <div class="col-md-8 mx-auto">
-                <x-card-wrapper class="bg-secondary">
-                    <form>
+          @auth
+            <section class="container">
+                <div class="col-md-8 mx-auto">
+                <x-card-wrapper>
+                    <form action="/blog/{{$blog->slug}}/comments" method="POST">
+                        @csrf
                         <div class="mb-3">
-                            <textarea class="form-control" name="" id="" cols="10" rows="5" placeholder="Say Something...."></textarea>
+                            <textarea class="form-control" name="body" id="" cols="10" rows="5" placeholder="Say Something...."></textarea>
                         </div>
+                        @error('body')
+                            <p class="text-danger">{{$message}}</p>
+                        @enderror
                         <div class="d-flex justify-content-end">
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </form>
                 </x-card-wrapper>
-              </div>
-          </section>
+                </div>
+            </section>
+            @else
+            <p class="text-center">Please <a href="/login">login</a> to participate in discussion</p>
+          @endauth
+
 
           {{-- comments section --}}
         <x-comments :comments="$blog->comments" />
