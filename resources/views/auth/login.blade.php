@@ -17,11 +17,7 @@
                             value='{{old('email')}}'
                             required
                             >
-                            @error('email')
-                            <ul>
-                                <li><p class="text-danger">{{$message}}</p></li>
-                            </ul>
-                            @enderror
+                            <x-errors name="email" />
                           </div>
                         <div class="mb-3">
                           <label for="exampleInputPassword1">Password</label>
@@ -31,11 +27,7 @@
                           name = 'password'
 
                           required>
-                          @error('password')
-                          <ul>
-                              <li><p class="text-danger">{{$message}}</p></li>
-                          </ul>
-                          @enderror
+                          <x-errors name="password" />
                         </div>
                         <button type="submit" class="btn btn-primary ">Login</button>
                         {{-- Error Message --}}

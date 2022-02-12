@@ -17,11 +17,7 @@
                            value='{{old('name')}}'
                           required>
                             {{-- Error Message --}}
-                          @error('name')
-                          <ul>
-                              <li><p class="text-danger">{{$message}}</p></li>
-                          </ul>
-                          @enderror
+                          <x-errors name="name" />
 
                         </div>
                         <div class="mb-3">
@@ -33,11 +29,7 @@
                             name = 'username'
                             value='{{old('username')}}'
                             required>
-                            @error('username')
-                            <ul>
-                                <li><p class="text-danger">{{$message}}</p></li>
-                            </ul>
-                            @enderror
+                            <x-errors name="username" />
                           </div>
                           <div class="mb-3">
                             <label for="exampleInputEmail1">Email address</label>
@@ -49,11 +41,7 @@
                             value='{{old('email')}}'
                             required
                             >
-                            @error('email')
-                            <ul>
-                                <li><p class="text-danger">{{$message}}</p></li>
-                            </ul>
-                            @enderror
+                            <x-errors name="email" />
                           </div>
                         <div class="mb-3">
                           <label for="exampleInputPassword1">Password</label>
@@ -63,11 +51,7 @@
                           name = 'password'
 
                           required>
-                          @error('password')
-                          <ul>
-                              <li><p class="text-danger">{{$message}}</p></li>
-                          </ul>
-                          @enderror
+                          <x-errors name="password" />
                         </div>
                         <button type="submit" class="btn btn-primary ">Submit</button>
                         {{-- Error Message --}}
