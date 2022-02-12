@@ -26,9 +26,6 @@ class DatabaseSeeder extends Seeder
 
         // Blog::factory(2)->create(['category_id'=>$frontend->id]);
         // Blog::factory(2)->create(['category_id'=>$backend->id]);
-        User::truncate();
-        Blog::truncate();
-        Category::truncate();
 
         $mgmg=User::factory()->create(['name'=>'mgmg','username'=>'mgmg']);
         $aungaung=User::factory()->create(['name'=>'aungaung','username'=>'aungaung']);
