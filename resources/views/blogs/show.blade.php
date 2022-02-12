@@ -23,7 +23,7 @@
           </div>
 
           {{-- comments section --}}
-        <x-comments />
+        <x-comments :comments="$blog->comments" />
         <!-- subscribe new blogs -->
         <x-subscribe />
         <x-blog_you_may_like  :randomBlogs="$randomBlogs" />
