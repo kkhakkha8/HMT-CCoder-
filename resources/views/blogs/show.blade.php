@@ -14,7 +14,19 @@
                 <div>Author - <a href="/authors/{{$blog->author->username}}">{{$blog->author->name}}</a></div>
                 <a href="/categories/{{$blog->category->slug}}"><div class="badge bg-primary">{{$blog->category->name}}</div></a>
                 <div class="text-secondary">{{$blog->created_at->diffForHumans()}}</div>
-                <div class="text-secondary"><button class="btn btn-warning">Subscribe</button></div>
+                <div class="text-secondary">
+                    <form action="" method="POST">
+                        @csrf
+                        @auth
+                            @if(auth()->user()->isSubscribed($blog))
+                            <button class="btn btn-danger">Unsubscribe</button>
+                            @else
+                            <button class="btn btn-warning">Subscribe</button>
+                            @endif
+                        @endauth
+
+                    </form>
+                </div>
 
                 <p class="lh-md mt-3">
                   {{$blog->body}}
