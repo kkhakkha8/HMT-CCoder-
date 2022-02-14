@@ -14,6 +14,7 @@
                 <div>Author - <a href="/authors/{{$blog->author->username}}">{{$blog->author->name}}</a></div>
                 <a href="/categories/{{$blog->category->slug}}"><div class="badge bg-primary">{{$blog->category->name}}</div></a>
                 <div class="text-secondary">{{$blog->created_at->diffForHumans()}}</div>
+                <div class="text-secondary"><button class="btn btn-warning">Subscribe</button></div>
 
                 <p class="lh-md mt-3">
                   {{$blog->body}}
@@ -35,7 +36,7 @@
           @endif
 
         <!-- subscribe new blogs -->
-        <x-subscribe />
+
         <x-blog_you_may_like  :randomBlogs="$randomBlogs" />
 </x-layout>
 
