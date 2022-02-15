@@ -15,7 +15,7 @@
                 <a href="/categories/{{$blog->category->slug}}"><div class="badge bg-primary">{{$blog->category->name}}</div></a>
                 <div class="text-secondary">{{$blog->created_at->diffForHumans()}}</div>
                 <div class="text-secondary">
-                    <form action="" method="POST">
+                    <form action="/blog/{{$blog->slug}}/subscription" method="POST">
                         @csrf
                         @auth
                             @if(auth()->user()->isSubscribed($blog))
@@ -24,7 +24,6 @@
                             <button class="btn btn-warning">Subscribe</button>
                             @endif
                         @endauth
-
                     </form>
                 </div>
 

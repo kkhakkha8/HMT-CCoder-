@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\User;
 
 
 class BlogController extends Controller
@@ -42,5 +43,15 @@ class BlogController extends Controller
 
         // return $query->get();
         return $query;
+    }
+    public function subscriptionHandler (Blog $blog) {
+        // if blog subscribed to blog
+        if (User::find(auth()->id())->isSubscribed($blog)) {
+            $blog->unSubscribe();
+        } else {
+            $blog->subscribe();
+        }
+        return back();
+
     }
 }

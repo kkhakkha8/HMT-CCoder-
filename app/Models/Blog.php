@@ -52,4 +52,10 @@ class Blog extends Model
     public function subscribers(){
         return $this->belongsToMany(User::class,'blog_user'); // if naming convention for blog_user is correct blog_user second paremeter is not necessary
     }
+    public function unSubscribe(){
+         $this->subscribers()->detach(auth()->id());
+    }
+    public function subscribe(){
+         $this->subscribers()->attach(auth()->id());
+    }
 }
