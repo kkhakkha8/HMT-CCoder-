@@ -16,7 +16,7 @@
                 @else
                     <img style="height:50px;width:50px;border-radius:30px" src="{{auth()->user()->avatar}}" alt="">
                     <a href="" class="nav-link">Welcome {{auth()->user()->name}}</a>
-                    <form action="../logout" method="POST">
+                    <form action="/logout" method="POST">
                         @csrf
                         <button type="submit" class="nav-link btn btn-link">Log out</button>
                     </form>

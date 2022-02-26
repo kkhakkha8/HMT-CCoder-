@@ -54,4 +54,11 @@ class BlogController extends Controller
         return back();
 
     }
+
+    public function create() {
+        // if(!auth()->check() || !auth()->user()->is_admin){
+        //     abort(403);
+        // }
+        return view('blogs.create');
+    }
 }
