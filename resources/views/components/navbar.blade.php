@@ -24,6 +24,11 @@
                 @endguest
 
                 <a href="#subscribe" class="nav-link">Subscribe</a>
+                @auth
+                @if (auth()->user()->is_admin)
+                    <a href="/admin/blogs/create"><button class="btn btn-success">Create Post</button></a>
+                @endif
+            @endauth
             </div>
       </div>
 </nav>

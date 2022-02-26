@@ -5,7 +5,7 @@
 <h3 class="my-3 text-center">Create Blog Form</h3>
 <div class="col-md-8 mx-auto">
     <x-card-wrapper>
-        <form action="" method="POST">
+        <form action="" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
@@ -45,17 +45,22 @@
                 <textarea class="form-control" name="body" id="body" cols="30" rows="10">{{old('body')}}</textarea>
                 <x-errors name="body" />
               </div>
+              <div class="mb-3">
+                <label for="thumbnail" class="form-label">Upload Img</label>
+                <input type="file" name="thumbnail" id="thumbnail" class="form-control">
+                <x-errors name="thumbnail" />
+              </div>
 
               <div class="mb-3">
                   <label for="Category" class="form-label">Category</label>
                   <select name="category_id" id="Category" class="form-control">
                       @foreach ($categories as $category)
-                            <option {{$categosy->id == old('category_id') ? 'selected': '' }} value="{{$category->id}}">{{$category->name}}</option>
+                            <option {{$category->id == old('category_id') ? 'selected': '' }} value="{{$category->id}}">{{$category->name}}</option>
                       @endforeach
                   </select>
-              </div>
+                  <x-errors name="category_id" />
               <div class="d-flex justify-content-center">
-                <button type="submit" class="btn btn-success ">Post Now</button>
+                <button type="submit" class="btn btn-success mt-3">Post Now</button>
               </div>
 
         </form>
