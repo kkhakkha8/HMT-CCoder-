@@ -43,6 +43,7 @@ Route::post('/login',[AuthController::class,'post_login'])->middleware('guest');
 Route::post('/blog/{blog:slug}/subscription',[BlogController::class,'subscriptionHandler']);
 
 Route::get('/admin/blogs/create',[BlogController::class,'create'])->middleware('admin');
+Route::post('/admin/blogs/create',[BlogController::class,'store'])->middleware('admin');
 // all  ->  index  -> blogs.index
 //single  -> show  ->blogs.show
 //form  -> create  ->blogs.create
